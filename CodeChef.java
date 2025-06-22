@@ -183,6 +183,18 @@ class CodeChef {
             int testCases = in.nextInt();
             while (testCases-- > 0) {
                 // write code here
+
+                // int n = in.nextInt();
+                // int[] arr = new int[n];
+                // for (int i = 0; i < n; i++) {
+                //     arr[i] = in.nextInt();
+                // }
+
+                // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
+                // for (int i = 0; i < n; i++) {
+                //     int num = sc.nextInt();
+                //     freq.put(num, freq.getOrDefault(num, 0) + 1); // increment count
+                // }
             }
             out.close();
         } catch (Exception e) {
