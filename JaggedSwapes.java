@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class JaggedSwapes {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -183,18 +183,16 @@ public class Main {
             int testCases = in.nextInt();
             while (testCases-- > 0) {
                 // write code here
-
-                // int n = in.nextInt();
-                // int[] arr = new int[n];
-                // for (int i = 0; i < n; i++) {
-                // arr[i] = in.nextInt();
-                // }
-
-                // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
-                // for (int i = 0; i < n; i++) {
-                //     int num = sc.nextInt();
-                //     freq.put(num, freq.getOrDefault(num, 0) + 1); // increment count
-                // }
+                int n = in.nextInt();
+                int[] arr = new int[n];
+                for (int i = 0; i < n; i++) {
+                    arr[i] = in.nextInt();
+                }
+                if (arr[0] == 1) {
+                    out.println("YES");
+                } else {
+                    out.println("NO");
+                }
             }
             out.close();
         } catch (Exception e) {
