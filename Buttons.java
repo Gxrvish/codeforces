@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Buttons {
 
     static class FastReader {
 
@@ -196,7 +196,16 @@ public class Main {
             while (testCases-- > 0) {
                 // write code here
 
-                // int n = in.nextInt();
+                int a = in.nextInt();
+                int b = in.nextInt();
+                int c = in.nextInt();
+                int annaMoves = a + (c + 1) / 2;
+                int katieMoves = b + c / 2;
+                if (annaMoves > katieMoves) {
+                    out.println("First");
+                } else {
+                    out.println("Second");
+                }
                 // int[] arr = new int[n];
                 // for (int i = 0; i < n; i++) {
                 //     arr[i] = in.nextInt();

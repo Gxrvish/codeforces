@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Desorting {
 
     static class FastReader {
 
@@ -192,20 +192,31 @@ public class Main {
         try {
             FastReader in = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = in.nextInt();
-            while (testCases-- > 0) {
-                // write code here
-
-                // int n = in.nextInt();
-                // int[] arr = new int[n];
-                // for (int i = 0; i < n; i++) {
-                //     arr[i] = in.nextInt();
-                // }
-                // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
-                // for (int i = 0; i < n; i++) {
-                //     int num = sc.nextInt();
-                //     freq.put(num, freq.getOrDefault(num, 0) + 1); // increment count
-                // }
+            int t = in.nextInt();
+            while (t-- > 0) {
+                int n = in.nextInt();
+                int[] a = new int[n];
+                for (int i = 0; i < n; i++) {
+                    a[i] = in.nextInt();
+                }
+                boolean foundInversion = false;
+                int minDiff = Integer.MAX_VALUE;
+                for (int i = 0; i < n - 1; i++) {
+                    if (a[i] > a[i + 1]) {
+                        foundInversion = true;
+                        break;
+                    }
+                    int diff = a[i + 1] - a[i];
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                    }
+                }
+                if (foundInversion) {
+                    System.out.println(0);
+                } else {
+                    int operations = (minDiff / 2) + 1;
+                    System.out.println(operations);
+                }
             }
             out.close();
         } catch (Exception e) {

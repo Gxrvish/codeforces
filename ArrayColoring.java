@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class ArrayColoring {
 
     static class FastReader {
 
@@ -196,11 +196,16 @@ public class Main {
             while (testCases-- > 0) {
                 // write code here
 
-                // int n = in.nextInt();
-                // int[] arr = new int[n];
-                // for (int i = 0; i < n; i++) {
-                //     arr[i] = in.nextInt();
-                // }
+                int n = in.nextInt();
+                int sum = 0;
+                for (int i = 0; i < n; i++) {
+                    sum += in.nextInt();
+                }
+                if(sum%2 == 0) {
+                    out.println("YES");
+                } else {
+                    out.println("NO");
+                }
                 // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
                 // for (int i = 0; i < n; i++) {
                 //     int num = sc.nextInt();
