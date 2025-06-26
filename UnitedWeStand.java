@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class UnitedWeStand {
 
     static class FastReader {
 
@@ -181,7 +181,7 @@ public class Main {
             }
             if (arr[mid] < target) {
                 left = mid + 1;
-            }else {
+            } else {
                 right = mid - 1;
             }
         }
@@ -194,18 +194,39 @@ public class Main {
             FastWriter out = new FastWriter();
             int testCases = in.nextInt();
             while (testCases-- > 0) {
-                // write code here
-
-                // int n = in.nextInt();
-                // int[] arr = new int[n];
-                // for (int i = 0; i < n; i++) {
-                //     arr[i] = in.nextInt();
-                // }
-                // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
-                // for (int i = 0; i < n; i++) {
-                //     int num = sc.nextInt();
-                //     freq.put(num, freq.getOrDefault(num, 0) + 1); // increment count
-                // }
+                int n = in.nextInt();
+                ArrayList<Integer> ans = new ArrayList<>();
+                int min = Integer.MAX_VALUE;
+                int[] arr = new int[n];
+                for (int i = 0; i < n; i++) {
+                    arr[i] = in.nextInt();
+                    if (arr[i] < min) {
+                        min = arr[i];
+                    }
+                }
+                int minCount = 0;
+                for (int num : arr) {
+                    if (num == min) {
+                        minCount++;
+                    } else {
+                        ans.add(num);
+                    }
+                }
+                if (minCount == n) {
+                    out.println(-1);
+                } else {
+                    out.println(minCount + " " + ans.size());
+                    StringBuilder minSb = new StringBuilder();
+                    for (int i = 0; i < minCount; i++) {
+                        minSb.append(min).append(" ");
+                    }
+                    out.println(minSb.toString().trim());
+                    StringBuilder ansSb = new StringBuilder();
+                    for (int num : ans) {
+                        ansSb.append(num).append(" ");
+                    }
+                    out.println(ansSb.toString().trim());
+                }
             }
             out.close();
         } catch (Exception e) {

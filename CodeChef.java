@@ -1,8 +1,11 @@
+
 import java.io.*;
 import java.util.*;
 
 class CodeChef {
+
     static class FastReader {
+
         BufferedReader br;
         StringTokenizer st;
 
@@ -45,6 +48,7 @@ class CodeChef {
     }
 
     static class FastWriter {
+
         private final BufferedWriter bw;
 
         public FastWriter() {
@@ -72,8 +76,9 @@ class CodeChef {
 
     // GCD
     static long gcd(long a, long b) {
-        if (b == 0)
+        if (b == 0) {
             return a;
+        }
         return gcd(b, a % b);
     }
 
@@ -84,15 +89,19 @@ class CodeChef {
 
     // Prime Check
     static boolean isPrime(int n) {
-        if (n <= 1)
+        if (n <= 1) {
             return false;
-        if (n <= 3)
+        }
+        if (n <= 3) {
             return true;
-        if (n % 2 == 0 || n % 3 == 0)
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
             return false;
+        }
         for (int i = 5; i * i <= n; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0)
+            if (n % i == 0 || n % (i + 2) == 0) {
                 return false;
+            }
         }
         return true;
     }
@@ -137,6 +146,7 @@ class CodeChef {
 
     // Custom Comparator for Sorting
     static class Pair implements Comparable<Pair> {
+
         int first, second;
 
         public Pair(int first, int second) {
@@ -166,14 +176,54 @@ class CodeChef {
         int left = 0, right = arr.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (arr[mid] == target)
+            if (arr[mid] == target) {
                 return mid;
-            if (arr[mid] < target)
+            }
+            if (arr[mid] < target) {
                 left = mid + 1;
-            else
+            } else {
                 right = mid - 1;
+            }
         }
         return -1; // Not found
+    }
+
+    static void addDivisors(int n, HashSet<Integer> set) {
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                set.add(i);
+                set.add(n / i);
+            }
+        }
+    }
+
+    static long minCost(int X, int Y, int Z, int C) {
+        long g = gcd(X, Y);
+        long l = lcm(X, Y);
+
+        long ans = Long.MAX_VALUE;
+
+        // 0 operations: just change Z directly to gcd or lcm (if allowed)
+        ans = Math.min(ans, Math.abs(Z - g));
+        ans = Math.min(ans, Math.abs(Z - l));
+
+        // 1 operation: change Z + 1 gcd/lcm operation
+        ans = Math.min(ans, Math.abs(Z - g) + C);
+        ans = Math.min(ans, Math.abs(Z - l) + C);
+
+        // Collect divisors of X and Y as possible intermediate steps
+        HashSet<Integer> candidates = new HashSet<>();
+        addDivisors(X, candidates);
+        addDivisors(Y, candidates);
+
+        // 2 operations: change Z to d + change d to gcd or lcm + 2 operations cost
+        for (int d : candidates) {
+            long costG = Math.abs(Z - d) + Math.abs(d - g) + 2L * C;
+            long costL = Math.abs(Z - d) + Math.abs(d - l) + 2L * C;
+            ans = Math.min(ans, Math.min(costG, costL));
+        }
+
+        return ans;
     }
 
     public static void main(String[] args) throws IOException {
@@ -184,12 +234,11 @@ class CodeChef {
             while (testCases-- > 0) {
                 // write code here
 
-                // int n = in.nextInt();
-                // int[] arr = new int[n];
-                // for (int i = 0; i < n; i++) {
-                //     arr[i] = in.nextInt();
-                // }
-
+                int x = in.nextInt();
+                int y = in.nextInt();
+                int z = in.nextInt();
+                int c = in.nextInt();
+                out.println(minCost(x, y, z, c));
                 // Map<Integer, Integer> freq = new TreeMap<>(); // stores element -> count
                 // for (int i = 0; i < n; i++) {
                 //     int num = sc.nextInt();
