@@ -233,7 +233,6 @@ class CodeChef {
             int testCases = in.nextInt();
             while (testCases-- > 0) {
                 // write code here
-
                 int x = in.nextInt();
                 int y = in.nextInt();
                 int z = in.nextInt();
